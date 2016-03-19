@@ -1,0 +1,3 @@
+1. Make sure that the handling of mappings and autocmds is by convention
+2. Probably want to make it a ftplugin
+3. Make documentation
