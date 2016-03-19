@@ -1,3 +1,5 @@
 1. Make sure that the handling of mappings and autocmds is by convention
 2. Probably want to make it a ftplugin
 3. Make documentation
+4. Cache results of looking up associated files for a given basename
+5. Currently doesn't work unless the BasenameTest naming convention is used
