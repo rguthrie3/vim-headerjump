@@ -15,7 +15,7 @@ let g:loaded_headerjump = 1
 " Set to print the state at every update (whenever the buffer changes)
 " Default: False
 if !exists("g:headerjump_print_state")
-    let g:print_state = 0
+    let g:headerjump_print_state = 0
 endif
 
 " Given the basename, this string shows how to derive the unit test filename (without
@@ -48,7 +48,7 @@ function! s:SetState()
     " If we aren't editing one of these filetypes, clear the state for consistency
     let ext = expand("%:e")
     if ext != ".h" && ext != ".cpp" && ext != ".hpp"
-        call ClearState()
+        call s:ClearState()
     endif
 
     " Check if the state needs to be updated
@@ -68,7 +68,7 @@ function! s:SetState()
 
     " If the debug flag is set, print the new state
     if g:headerjump_print_state == 1
-        call PrintState()
+        call s:PrintState()
     endif
 endfunction
 
@@ -118,8 +118,8 @@ command -nargs=0 HeaderjumpGotoSource exec "e " . s:source_state
 command -nargs=0 HeaderjumpGotoHeader exec "e " . s:header_state
 command -nargs=0 HeaderjumpGotoUTest exec "e " . s:utest_state
 
-nnoremap <leader>1 :call HeaderjumpGotoSource()
-nnoremap <leader>2 :call HeaderjumpGotoHeader()
-nnoremap <leader>3 :call HeaderjumpGotoUTest()
+nnoremap <leader>1 :HeaderjumpGotoSource<CR>
+nnoremap <leader>2 :HeaderjumpGotoHeader<CR>
+nnoremap <leader>3 :HeaderjumpGotoUTest<CR>
 
 let &cpo = s:save_cpo
